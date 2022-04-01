@@ -43,7 +43,6 @@ async function seed() {
     ],
   });
 
-  // Add your code here
   const createProfile = await prisma.profile.create({
     data: {
       profilePictureURL: "examplepictureURL.com",
