@@ -85,11 +85,33 @@ async function seed() {
     },
   });
 
+  const createReply = await prisma.comment.create({
+    data: {
+      content: "I do not agree with this!",
+      user: {
+      connect: {
+        id: 3,
+      },
+    },
+    comment: {
+      connect: {
+        id: 1,
+      },
+    },
+    post: {
+      connect: {
+        id: 1,
+      },
+    },
+  },
+  });
+
   // console log for each step.
   console.log(`${createdUsers.count} users created`, createdUsers);
   console.log("Profile created for Alice", createProfile);
   console.log("Post created for Alice", createPost);
   console.log("Comment created for Alice's Post by Chris.", createComment);
+  console.log("Reply to comment 1", createReply)
 
   // Don't edit any of the code below this line
   process.exit(0);
